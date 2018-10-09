@@ -1,0 +1,149 @@
+Automation Testing
+==========================
+There are following tools:
+	-> Selenium :is API (application programing interface)/Library (open source)
+	-> QTP / UFT: is Tool (paid)
+	-> Jmetter : is tool for peromance testing (open source)
+	-> LoadRunner : is tool for peromance testing (paid)
+	-> Appium 	: is for mobile app testing
+	-> Cucumber 	: is testing
+	etc.
+
+Selenium Components
+====================
+-Selenium IDE 		: is plug for record and play 
+-Selenium WebDriver 	: is for scripting and framework development
+-Selenium RC/Grid 	: Remote control - for multi browser testing 
+-Auto IT		: for folder/file management and .exe/.bat file installation 
+
+Selenium Environment Setup 
+================================
+-JDK 		: java development kit (compiler , interpreter : development stack)
+		: Version : 10, 1.9, 1.8*,1.7 ...
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+	path : C:\Program Files\Java
+-Editor/IDE 	:
+		Eclipse
+			-Oxygen	**
+			-Neon	*
+			-Mars	*
+			-Juno
+			-Galalio
+			-Indigo 
+			etc.
+	
+http://www.eclipse.org/downloads/packages/release/juno/sr1/eclipse-ide-java-ee-developers
+	
+-Selenium Jar files / Library 
+	https://www.seleniumhq.org/download/
+
+
+-WebDriver (chrome, firefox ..)
+	
+https://chromedriver.storage.googleapis.com/index.html?path=2.42/
+
+	--this is available in 32bit format 
+	chromedriver_win32.zip	2018-09-13 21:11:33	3.42MB	
+
+
+Step 1:
+	Copy driver .exe file and paste in project folder 
+
+step 2:
+	add the selenium jar files in project library 
+
+	-Right Click on Project
+	-Then go to properties
+	-Then go to build path (left section)
+	-Then go to Library   (tab section)
+	-Then click on External Jar button (right section)
+		
+
+====================================
+Git	: version control 
+	-> git local repository
+		https://git-scm.com/download/win
+	-> github (cloud) 
+			signup account
+			 	https://github.com/	
+
+	git life cycle:
+		1. local files/folder (untracked files and folder)
+		2. local repository /init /create local repository 
+		3. add files to stage
+		4. commit stage files and folder to local repository
+
+		project -> git int -> git add -A -> git commit 
+		
+		git commands:
+		open the git bash
+			cd "C:\Users\vkumar15\Desktop\Weekend\example"
+			git init 
+			git status
+			git add -A 		: add all files
+			git add filename.txt	
+			git commit -m "message"
+			git log 
+			git diff filname.extension 
+
+	git remote add aliasname https://github.com/vimleshtech/testing_repo.git
+	git push -u aliasname master 
+	
+						 	
+ 
+	-download code/project/content from git repository
+	git clone shttps://github.com/vimleshtech/testing_repo.git		
+
+
+
+		
+Maven 		: is buid and dependency management tool/framework
+===================
+	pom.xml
+		GroupId: EnterpriseApplication Name/Group of Projects
+		ArtifectId : is project 
+		Version	: 1.0
+	
+		Dependencies:
+				 <dependency>
+				        <groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>        					        <version>3.13.0</version>
+				 </dependency>  
+
+				
+
+	Maven life cycle
+		clean		**
+		compile
+		test		**	
+		package		**
+		install
+		deploye
+
+		
+		
+	Maven Project's Structure
+		Project1:
+			src
+				main	: logical code 
+				test	: testcases								JRE		: java runtime environment/library
+			Maven Dependency:extra jars for application(like selenium etc)	
+			target		: output 
+			pom.xml		: configuration and dependency 
+	
+
+
+Jenkins
+=========================
+https://jenkins.io/download/thank-you-downloading-windows-installer-stable/
+
+
+open :
+	http://localhost:8080/login?from=%2F
+
+
+
+
+
+
+
