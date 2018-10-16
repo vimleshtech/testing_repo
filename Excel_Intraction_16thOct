@@ -1,0 +1,85 @@
+Excel Interaction
+====================
+File Extension :
+	.xls
+	.xlsx
+
+Workbook 	: is excel file 
+		: collection of worksheets 
+		: multiple worksheets can be in one workbook
+Worksheet	: is tab /table 
+		: combination of row and coumn
+
+
+
+Apahce Poi : is jar file or library for excel interaction
+================================
+There are following inbuilt classes:	
+	HSSFWorkBook		: read excel file from filestream 
+	HSSFSheet		: get particular worksheet	
+	HSSFRow			: get particular row
+	HSSFCell		: get particular column
+
+Other classes:
+	FileInputStream	: read file from physical location to JVM (java virtual machine)
+
+
+
+	
+
+==================
+package example;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+public class readExcel {
+
+	public static void main(String[] args) throws IOException {
+
+
+		FileInputStream fs = new FileInputStream("C:\\Users\\vkumar15\\Desktop\\Rohit Sessions - Sep 3rd\\Sample - Superstore.xls");
+		HSSFWorkbook book = new HSSFWorkbook(fs);
+		HSSFSheet sheet = book.getSheet("Sheet4");
+		
+		int wsc,rc,cc;		
+		wsc = book.getNumberOfSheets();
+		rc = sheet.getPhysicalNumberOfRows();
+		
+		cc = sheet.getRow(0).getPhysicalNumberOfCells();
+		
+		System.out.println("sheet count :"+wsc);
+		System.out.println("row count :"+rc);
+		System.out.println("col count :"+cc);
+		
+		for(int i=1;i<rc;i++)
+		{
+			HSSFRow row = sheet.getRow(i);
+			
+			HSSFCell cell =row.getCell(1);
+			System.out.println(cell.getStringCellValue());
+			
+			//driver.get("flip...")
+			//driver.findElement(By.id("id")).sendKeys(cell.getStringCellValue())
+			
+			//driver.get("amazon..")
+			//driver.findElement(By.id("id")).sendKeys(cell.getStringCellValue())
+			
+			cell =row.getCell(2);
+			System.out.println(cell.getDateCellValue());
+			
+			
+			
+		}
+		
+		
+	}
+
+	
+}
