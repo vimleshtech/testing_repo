@@ -1,0 +1,72 @@
+package flipkart;
+
+import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class flipkart_1 {
+
+	public static void main(String[] args)  throws IOException {
+		
+		FileInputStream fs = new FileInputStream("C:\\Users\\vkumar15\\Desktop\\excel1\\Book1.xls");
+		HSSFWorkbook book = new HSSFWorkbook(fs);
+		HSSFSheet sheet = book.getSheet("Sheet1");
+		
+		                                           
+		int wsc,rc,cc;		
+		wsc = book.getNumberOfSheets();
+		rc = sheet.getPhysicalNumberOfRows();
+		
+		cc = sheet.getRow(0).getPhysicalNumberOfCells();
+		
+		System.out.println("sheet count :"+wsc);
+		System.out.println("row count :"+rc);
+		System.out.println("col count :"+cc);
+		
+		WebDriver driver = new ChromeDriver();
+		
+		for(int i=1;i<rc;i++)
+		{
+			HSSFRow row = sheet.getRow(i);
+			
+			HSSFCell cell =row.getCell(0);
+			//System.out.println(cell.getStringCellValue());
+			String data = cell.getStringCellValue();
+			
+			System.out.println(data);
+			
+			
+			driver.get("https://www.Flipkart.com/");
+			driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div[1]/a/h3")).sendKeys(data);
+			driver.findElement(By.xpath("//*[@id=\"container\"]/div/header/div[1]/div/div[2]/form/div/div[2]/button/svg")).click();
+			String msg  = driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[1]/div[2]/div/div[1]/div[2]/div[2]/div/div/div/a/div[1]/div[1]/div/div/img")).getText();
+			System.out.println("flipkart price : "+msg);
+								
+			
+			driver.get ("https://www.Amazon.com/");
+			driver.findElement(By.id("//*[@id=\\\"nav-logo\\\"]/a[1]/span[1]")).sendKeys(data);
+			driver.findElement(By.xpath("//*[@id=\"nav-search\"]/form/div[2]/div/input")).click();
+			msg  = driver.findElement(By.xpath("//*[@id=\"result_0\"]/div/div/div/div[1]/div/div/a/img")).getText();
+			System.out.println("Amazon price : "+msg);
+			
+			
+			
+			
+			
+			
+		}
+		
+
+		
+
+	}
+
+}
